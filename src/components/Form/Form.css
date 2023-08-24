@@ -1,0 +1,210 @@
+.form {
+  padding: 70px 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 396px;
+}
+
+.form__container_logo{
+  display: flex;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.form__logo {
+  width: 100px;
+  height: 100px;
+  background-image: url("../../images/logo_planet.png");
+  background-size: cover;
+  object-fit: contain;
+  animation: rotate 30s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.form__logo_title{
+  display: flex;
+  position: absolute; 
+  top: 30px; 
+  left: 16px;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+    color: white;
+    font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 16px;
+}
+
+.form__container_logo:hover {
+  cursor: pointer;
+opacity: .4;
+}
+
+.form__title {
+  color: #fff;
+  padding: 24px 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.form__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+  width: 396px;
+}
+.form__input:focus{
+  outline: 4px ridge rgba(70, 165, 91, 0.6);
+}
+
+.form__button-save {
+  height: 45px;
+  border: none;
+  background: #4285f4;
+  border-radius: 3px;
+  color: white;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.form__button-save:hover {
+  opacity: 0.8;
+}
+
+.form__button-save_inactive {
+  pointer-events: none;
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  color: #000000;
+  opacity: 0.2;
+}
+
+.form__button-save_loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.form__text {
+  margin: 17px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8b8b8b;
+}
+
+.form__link {
+  text-decoration: none;
+  color: #4285F4;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.form__link:hover {
+  color: #a0a0a0;
+}
+
+.form__label {
+  
+  margin: 0;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #8b8b8b;
+}
+
+.form__input {
+  box-sizing: border-box;
+  padding: 0 15px;
+  width: 100%;
+  margin: 10px 0;
+  height: 46px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border: none;
+  background: #2f2f2f;
+  border-radius: 8px;
+  outline: none;
+}
+
+.form__input:focus {
+  border-bottom: 1px solid #000000;
+}
+
+.form__input-error {
+  font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  color: #EE3465;
+}
+
+.form__input-error_general{
+  margin: 27px 0;
+}
+
+.form__input-error_active {
+  visibility: visible;
+}
+
+@media screen and (max-width: 1023px) {
+  .form {
+    padding-top: 100px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .form {
+    padding: 56px 30px 30px 30px;
+    align-items: center;
+  }
+
+  .form__title {
+    margin: 0;
+    padding: 50px 0 80px 0;
+    text-align: center;
+  }
+
+  .form__container {
+    min-height: 468px;
+    max-width: 260px;
+  }
+
+  .form__button-save {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .form__text {
+  margin: 17px auto;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .form__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

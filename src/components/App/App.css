@@ -1,0 +1,25 @@
+.body {
+  margin: 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  background:  #19285a;
+}
+.page {
+  display: flex;
+  margin: 0;
+  /* position: relative; */
+  /* margin-top: 100px; */
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  min-width: 320px;
+  width: 100%;
+  min-height: 100vh;
+  color: #fff;
+  background: #19285a;
+}
+
