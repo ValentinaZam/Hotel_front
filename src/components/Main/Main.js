@@ -3,6 +3,8 @@ import Header from "../Header/Header";
 // import Footer from "../Footer/Footer";
 import "./Main.css"
 import Room from "../Room/Room";
+import { Route } from "react-router-dom";
+import RoomInfo from "../RoomInfo/RoomInfo";
 // import roomsApi from "../../utils/api"
 
 function Main({ loggedIn, signOut, roomsAll, onClick }) {
@@ -21,9 +23,9 @@ function Main({ loggedIn, signOut, roomsAll, onClick }) {
     return (
         <>
             <Header loggedIn={loggedIn} signOut={signOut} />
-            <h2>Доступные номера</h2>
+            <h2 className="title__text">Доступные номера</h2>
             <ul className="cards__list">
-                {roomsAll.map((item) => (<Room room={item} key={item._id} onClick={onClick} isLike={handleIsLike(item)}></Room>))}
+                {roomsAll.map((item) => (<Room room={item} key={item._id} onClick={onClick} isLike={handleIsLike(item)} ></Room>))}
             </ul>
 
         </>

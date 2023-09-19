@@ -8,6 +8,7 @@ import Login from "../Login/Login"
 import * as auth from "../../utils/Auth"
 import { CurrentUserContext } from "../Context/CurrentUserContext"
 import { mainApi } from "../../utils/MainApi"
+import RoomInfo from "../RoomInfo/RoomInfo"
 
 
 
@@ -90,6 +91,7 @@ function App() {
             {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/signup" element={<Register onSubmit={handleRegistrationSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
             <Route path="/signin" element={<Login onSubmit={handleLoginSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
+            <Route path="/rooms/:id" element={<RoomInfo roomsAll={roomsAll} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
 

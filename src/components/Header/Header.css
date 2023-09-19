@@ -37,6 +37,7 @@
     justify-content: space-between;
   }
   .header__title{
+    font-family: "Playfair Display";
     margin: 15px 0 20px 0;
     text-align: center;
   }

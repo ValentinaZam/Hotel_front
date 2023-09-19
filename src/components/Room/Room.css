@@ -44,6 +44,10 @@
     border-radius: 6px;
     width: 185px;
   }
+
+  .card__button:hover{
+    opacity: .7;
+  }
   
   .card__time {
     display: flex;

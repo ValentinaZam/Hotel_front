@@ -8,6 +8,10 @@
     display: flex;
     margin-top: 130px;
 }
+.title__text{
+    font-family: "Playfair Display";
+    margin: 50px auto 10px;
+}
 
 .image{
     border: 5px;
@@ -16,7 +20,7 @@
 }
 .cards__list {
     padding: 0;
-    margin: 85px 70px 30px;
+    margin: 30px 70px 30px;
     list-style: none;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -33,7 +37,7 @@
 
   @media screen and (max-width: 750px) {
     .cards__list {
-        margin: 90px auto 10px;
+        margin: 30px auto 10px;
         grid-template-columns: repeat(1, 300px);
         gap: 23px 0;
       }
