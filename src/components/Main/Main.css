@@ -8,3 +8,33 @@
     display: flex;
     margin-top: 130px;
 }
+
+.image{
+    border: 5px;
+    width: 100px;
+    height: 100px;
+}
+.cards__list {
+    padding: 0;
+    margin: 85px 70px 30px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 20px;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .cards__list {
+        padding: 0;
+        grid-template-columns: repeat(2, 339px);
+        gap: 30px 36px;
+      }
+  }
+
+  @media screen and (max-width: 750px) {
+    .cards__list {
+        margin: 90px auto 10px;
+        grid-template-columns: repeat(1, 300px);
+        gap: 23px 0;
+      }
+  }

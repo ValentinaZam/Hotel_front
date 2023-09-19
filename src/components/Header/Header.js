@@ -3,7 +3,7 @@ import planet from "../../images/logo_planet.png"
 import "./Header.css";
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
-function Header() {
+function Header({ loggedIn, signOut }) {
     const location = useLocation();
     return (<header className='header'>
         <div className='header__container'>
@@ -17,10 +17,14 @@ function Header() {
                         to="/saved-rooms">Мои номера</NavLink>
                 </div>
             </div>
-            <div>
+            {loggedIn ? (<div>
+                <Link className='header__link' to="signin" onClick={signOut}>Выйти</Link>
+
+            </div>) : (<div>
                 <Link className='header__link' to="signup">Регистрация</Link>/
                 <Link className='header__link' to="signin">Войти</Link>
-            </div>
+            </div>)}
+
         </div>
     </header >)
 }

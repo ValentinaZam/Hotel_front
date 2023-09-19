@@ -9,17 +9,26 @@ function Form({
   title,
   buttonText,
   question,
+  onSubmit,
+  resetErrorGlobal
 }) {
+  // const location = useLocation();
+  const handleGoToMain = () => {
+    window.location.href = "/";
+  }
+
+  function handleLoginClick() {
+    resetErrorGlobal();
+  }
   return (
     <div className="form">
       <div className="form__container_logo">
         <Link to="/" className="form__logo">
-
         </Link>
-        <p className="form__logo_title">На главную</p>
+        <button className="form__logo_title" onClick={handleGoToMain}>На главную</button>
       </div>
       <h1 className="form__title">{title}</h1>
-      <form className="form__container" noValidate>
+      <form className="form__container" noValidate onSubmit={onSubmit}>
         <div>{children}</div>
         <button
           type="submit"
@@ -30,7 +39,7 @@ function Form({
       </form>
       <p className="form__text">
         {question}
-        <Link to={link} className="form__link">
+        <Link to={link} className="form__link" onClick={handleLoginClick}>
           {linkText}
         </Link>
       </p>

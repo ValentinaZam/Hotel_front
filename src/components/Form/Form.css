@@ -13,6 +13,16 @@
   position: relative;
 }
 
+.form__input-error{
+  display: block; 
+  min-height: 10px;
+  font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  color: #EE3465;
+}
+
 .form__logo {
   width: 100px;
   height: 100px;
@@ -35,16 +45,18 @@
 .form__logo_title{
   display: flex;
   position: absolute; 
-  top: 30px; 
-  left: 16px;
+  top: 40px; 
+  left: 14px;
   text-align: center;
   justify-content: center;
   text-decoration: none;
     color: white;
-    font-size: 12px;
+    font-size: 11px;
 font-style: normal;
 font-weight: 500;
 line-height: 16px;
+border: none;
+background-color: rgba(0, 0, 0, 0);
 }
 
 .form__container_logo:hover {
