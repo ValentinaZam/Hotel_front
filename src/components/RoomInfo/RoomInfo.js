@@ -5,18 +5,16 @@ import { useParams } from 'react-router-dom';
 import Preloader from "../Preloader/Preloader";
 
 
-function RoomInfo({ loggedIn, signOut, roomsAll }) {
+function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin }) {
     const [roomInfo, setRoomInfo] = useState(null);
     const params = useParams();
     // const roomInfoId = roomsAll.find(el => el.roomId === parseInt(params.id))
     useEffect(() => {
-        console.log(roomsAll)
-
         const roomInfoId = roomsAll.find((room) => room.roomId === parseInt(params.id));
         setRoomInfo(roomInfoId);
     }, [params.id, roomsAll, setRoomInfo]);
     return (<>
-        <Header loggedIn={loggedIn} signOut={signOut} />
+        <Header loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />
         {roomInfo ? (<><h2 className="title__text">Информация о номере</h2>
             <p>{roomInfo.name}</p>
             <article className='container'>

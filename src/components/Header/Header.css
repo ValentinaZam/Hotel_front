@@ -59,3 +59,66 @@
     border: 2px solid wheat;
     border-radius: 5px;
 }
+
+@media screen and (max-width: 860px){
+  .header__logo{
+    width: 80px;
+    height: 80px;
+}
+.header__title {
+  font-family: "Playfair Display";
+  font-size: 25px;
+  margin: 37px 0 20px 0;
+  
+}
+.header__link {
+  font-size: small;
+  padding: 6px;
+ 
+}
+}
+
+@media screen and (max-width: 750px){
+  .link__container{
+    text-align: center;
+  }
+  .header__logo{
+    width: 60px;
+    height: 60px;
+}
+.header__title {
+  font-family: "Playfair Display";
+  font-size: 20px;
+  margin: 37px 0 20px 0;
+}
+.header__link {
+  font-size: 12px;
+}
+}
+
+@media screen and (max-width: 580px){
+  .header__logo{
+    width: 60px;
+    height: 60px;
+}
+.header__title {
+  font-family: "Playfair Display";
+  padding: 0 12px;
+  font-size: 20px;
+  margin: 37px 0 20px 0;
+}
+.header__link {
+  font-size: 9px;
+}
+.header__container{
+  padding: 0 35px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+}
+@media screen and (max-width: 390px){
+  .header__container{
+    padding: 0 10px;
+  }
+}

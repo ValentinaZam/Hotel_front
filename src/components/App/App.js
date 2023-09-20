@@ -9,6 +9,7 @@ import * as auth from "../../utils/Auth"
 import { CurrentUserContext } from "../Context/CurrentUserContext"
 import { mainApi } from "../../utils/MainApi"
 import RoomInfo from "../RoomInfo/RoomInfo"
+import { admin } from "../../utils/const"
 
 
 
@@ -16,6 +17,7 @@ function App() {
   const navigate = useNavigate()
   const location = useLocation();
   const [currentUser, setCurrentUser] = useState({})
+  const [isAdmin, setIsAdmin] = useState(JSON.parse(localStorage.getItem("isAdmin")) ?? false)
   const [errorGlobal, setErrorGlobal] = useState("");
   const [loggedIn, setLoggedIn] = useState(false)
   const [roomsAll, setRoomsAll] = useState(JSON.parse(localStorage.getItem("allRooms")) ?? []);
@@ -29,6 +31,16 @@ function App() {
     auth
       .authorize(userInfo)
       .then(() => {
+        console.log(userInfo)
+        console.log(admin)
+        if (userInfo.email === admin.email && userInfo.password === admin.password) {
+          setIsAdmin(true)
+          localStorage.setItem("isAdmin", true)
+        } else {
+          setIsAdmin(false)
+          localStorage.setItem("isAdmin", false)
+        }
+
         setLoggedIn(true)
         navigate("/", { replace: true })
       })
@@ -49,20 +61,31 @@ function App() {
       })
   }
 
+  // const isToken = () => {
+  //   const tokenUser = localStorage.getItem("token")
+  //   if (tokenUser) {
+  //     auth
+  //       .checkToken(tokenUser)
+  //       .then(() => {
+  //         setLoggedIn(true)
+  //         navigate("/", { replace: true });
+  //       })
+  //       .catch((err) => console.log(`Ошибка: ${err}`))
+  //   }
+  // }
 
-
-  const isToken = () => {
+  useEffect(() => {
     const tokenUser = localStorage.getItem("token")
     if (tokenUser) {
       auth
         .checkToken(tokenUser)
         .then(() => {
           setLoggedIn(true)
-          navigate("/", { replace: true });
+          navigate(location.pathname, { replace: true });
         })
         .catch((err) => console.log(`Ошибка: ${err}`))
     }
-  }
+  }, [loggedIn])
 
 
   useEffect(() => {
@@ -74,7 +97,7 @@ function App() {
           setRoomsAll(rooms)
         }).catch((err) => console.log(`Ошибка: ${err}`))
     }
-  }, [setRoomsAll, loggedIn])
+  }, [loggedIn])
 
   const signOut = () => {
     setLoggedIn(false)
@@ -87,11 +110,11 @@ function App() {
         <div className="page">
           {/* <Header /> */}
           <Routes>
-            <Route path="/" element={<Main signOut={signOut} loggedIn={loggedIn} roomsAll={roomsAll} />} />
+            <Route path="/" element={<Main signOut={signOut} loggedIn={loggedIn} roomsAll={roomsAll} isAdmin={isAdmin} />} />
             {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/signup" element={<Register onSubmit={handleRegistrationSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
             <Route path="/signin" element={<Login onSubmit={handleLoginSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
-            <Route path="/rooms/:id" element={<RoomInfo roomsAll={roomsAll} />} />
+            <Route path="/rooms/:id" element={<RoomInfo roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
 
