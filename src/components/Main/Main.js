@@ -11,7 +11,7 @@ function Main({ loggedIn, signOut, roomsAll, onClick }) {
     useEffect(() => {
         console.log(roomsAll)
     }, [roomsAll])
-    // console.log(roomsAll)
+    console.log(roomsAll)
 
     const handleIsLike = (movie) => {
         // if (!isMoviesSavedPage) {

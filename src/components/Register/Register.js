@@ -73,7 +73,6 @@ function Register({ onSubmit, errorGlobal, resetErrorGlobal }) {
   }
 
   useEffect(() => {
-    console.log(errors)
     validate();
   }, [formValue]);
 

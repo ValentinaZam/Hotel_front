@@ -18,7 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [errorGlobal, setErrorGlobal] = useState("");
   const [loggedIn, setLoggedIn] = useState(false)
-  const [roomsAll, setRoomsAll] = useState([]);
+  const [roomsAll, setRoomsAll] = useState(JSON.parse(localStorage.getItem("allRooms")) ?? []);
 
   function resetErrorGlobal() {
     setErrorGlobal("");
@@ -51,7 +51,7 @@ function App() {
 
 
 
-  useEffect(() => {
+  const isToken = () => {
     const tokenUser = localStorage.getItem("token")
     if (tokenUser) {
       auth
@@ -62,19 +62,19 @@ function App() {
         })
         .catch((err) => console.log(`Ошибка: ${err}`))
     }
-  }, [loggedIn, errorGlobal])
+  }
 
 
   useEffect(() => {
-    mainApi
-      .getRooms()
-      .then((rooms) => {
-        localStorage.setItem("allRooms", JSON.stringify(rooms));
-        setRoomsAll(rooms)
-        console.log(rooms)
-      }).catch((err) => console.log(`Ошибка: ${err}`))
-
-  }, [setRoomsAll])
+    if (roomsAll.length === 0) {
+      mainApi
+        .getRooms()
+        .then((rooms) => {
+          localStorage.setItem("allRooms", JSON.stringify(rooms));
+          setRoomsAll(rooms)
+        }).catch((err) => console.log(`Ошибка: ${err}`))
+    }
+  }, [setRoomsAll, loggedIn])
 
   const signOut = () => {
     setLoggedIn(false)

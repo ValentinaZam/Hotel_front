@@ -21,8 +21,8 @@ function Header({ loggedIn, signOut }) {
                 <Link className='header__link' to="signin" onClick={signOut}>Выйти</Link>
 
             </div>) : (<div>
-                <Link className='header__link' to="signup">Регистрация</Link>/
-                <Link className='header__link' to="signin">Войти</Link>
+                <Link className='header__link' to="/signup">Регистрация</Link>/
+                <Link className='header__link' to="/signin">Войти</Link>
             </div>)}
 
         </div>
