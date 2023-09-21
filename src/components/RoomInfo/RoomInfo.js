@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import "./RoomInfo.css"
 import { useParams } from 'react-router-dom';
 import Preloader from "../Preloader/Preloader";
+import ButtonToMain from '../ButtonToMain/ButtonToMain';
 
 
 function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin }) {
@@ -13,6 +14,8 @@ function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin }) {
         const roomInfoId = roomsAll.find((room) => room.roomId === parseInt(params.id));
         setRoomInfo(roomInfoId);
     }, [params.id, roomsAll, setRoomInfo]);
+
+
     return (<>
         <Header loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />
         {roomInfo ? (<><h2 className="title__text">Информация о номере</h2>
@@ -25,7 +28,7 @@ function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin }) {
                 </div>
 
             </article></>) : <Preloader />}
-
+        {/* <ButtonToMain /> */}
     </>
 
     )

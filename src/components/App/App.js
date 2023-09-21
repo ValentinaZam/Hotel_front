@@ -10,6 +10,7 @@ import { CurrentUserContext } from "../Context/CurrentUserContext"
 import { mainApi } from "../../utils/MainApi"
 import RoomInfo from "../RoomInfo/RoomInfo"
 import { admin } from "../../utils/const"
+import AdminPage from "../AdminPage/AdminPage"
 
 
 
@@ -31,8 +32,6 @@ function App() {
     auth
       .authorize(userInfo)
       .then(() => {
-        console.log(userInfo)
-        console.log(admin)
         if (userInfo.email === admin.email && userInfo.password === admin.password) {
           setIsAdmin(true)
           localStorage.setItem("isAdmin", true)
@@ -114,7 +113,9 @@ function App() {
             {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/signup" element={<Register onSubmit={handleRegistrationSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
             <Route path="/signin" element={<Login onSubmit={handleLoginSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
+            <Route path="/rooms" element={<AdminPage roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />} />
             <Route path="/rooms/:id" element={<RoomInfo roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
 

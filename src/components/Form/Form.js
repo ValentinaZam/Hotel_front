@@ -12,7 +12,6 @@ function Form({
   onSubmit,
   resetErrorGlobal
 }) {
-  // const location = useLocation();
   const handleGoToMain = () => {
     window.location.href = "/";
   }

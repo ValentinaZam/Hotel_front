@@ -2,18 +2,20 @@ import React from 'react';
 import planet from "../../images/logo_planet.png"
 import "./Header.css";
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import ButtonToMain from '../ButtonToMain/ButtonToMain';
 
 function Header({ loggedIn, signOut, isAdmin }) {
-    console.log(isAdmin)
     const location = useLocation();
     return (<header className='header'>
         <div className='header__container'>
-            <img className='header__logo' src={planet} alt="Логотип в виде планеты" />
+            {location.pathname === "/" ? (
+                <img className='header__logo' src={planet} alt="Логотип в виде планеты" />
+            ) : <ButtonToMain />}
             <div >
                 <h1 className='header__title'>Гостевой дом "Планета"</h1>
                 <div className='header__nav'>
-                    {isAdmin ? (<NavLink className={location.pathname === "/rooms" ? "header__link_active" : "header__link_not-active"}
-                        to="/rooms">Номерной фонд</NavLink>) : (<NavLink className={location.pathname === "/saved-rooms" ? "header__button-active" : "header__link_not-active"}
+                    {isAdmin ? (<NavLink className="header__nav_link"
+                        to="/rooms">Номерной фонд</NavLink>) : (<NavLink className="header__nav_link"
                             to="/saved-rooms">Мои номера</NavLink>)}
                 </div>
             </div>

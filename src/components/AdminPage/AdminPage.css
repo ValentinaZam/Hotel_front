@@ -1,0 +1,17 @@
+.title_panel{
+    margin: 15px;
+}
+.rooms__list{
+    padding: 0;
+    margin: 30px 70px 30px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 20px;
+    color: black;
+}
+.list__container{
+    border: 2px solid rgb(134, 122, 99);
+    border-radius: 6px;
+background-color: wheat;
+}
