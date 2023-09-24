@@ -61,28 +61,17 @@
   
   .card__delete-button {
     background-image: url("../../images/delete-button.svg");
+position: absolute;
+left: 174px;
+top: 15px;
     width: 16px;
     height: 16px;
-    border: none;
+    border: 2px solid white;
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
     cursor: pointer;
-  }
-  
-  .card__like-button {
-    background-image: url("../../images/like.svg");
-    width: 16px;
-   object-fit: cover;
-    border: none;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
-  .card__like-button:hover{
-    opacity: .7;
+    
   }
   
   

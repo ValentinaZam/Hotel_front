@@ -16,7 +16,7 @@ function Header({ loggedIn, signOut, isAdmin }) {
                 <div className='header__nav'>
                     {isAdmin ? (<NavLink className="header__nav_link"
                         to="/rooms">Номерной фонд</NavLink>) : (<NavLink className="header__nav_link"
-                            to="/saved-rooms">Мои номера</NavLink>)}
+                            to="/saved-rooms">{location.pathname === "/saved-rooms" ? "" : "Мои номера"}</NavLink>)}
                 </div>
             </div>
             {loggedIn ? (<div>

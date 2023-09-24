@@ -20,16 +20,15 @@ class MainApi {
         }).then((res) => this._checkResponse(res))
     }
 
-    setUserInfo(data) {
-        return fetch(this._url + "/users/me", {
+    setRoomInfo(data) {
+        return fetch(this._url + `/rooms/${data._id}`, {
             method: "PATCH",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("token")}`,
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
-                name: data.name,
-                email: data.email
+                status: data.status
             })
         }).then((res) => this._checkResponse(res))
     }
@@ -43,17 +42,12 @@ class MainApi {
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
-                country: data.country,
-                director: data.director,
-                duration: data.duration,
-                year: data.year,
                 description: data.description,
-                image: `https://api.nomoreparties.co${data.image.url}`,
-                trailerLink: data.trailerLink,
-                nameRU: data.nameRU,
-                nameEN: data.nameEN,
-                thumbnail: `https://api.nomoreparties.co${data.image.formats.thumbnail.url}`,
-                movieId: data.id,
+                image: data.image,
+                roomId: data.roomId,
+                name: data.name,
+                category: data.category,
+                status: data.status,
             })
         }).then((res) => this._checkResponse(res))
     }

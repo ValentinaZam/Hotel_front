@@ -11,17 +11,20 @@ import { mainApi } from "../../utils/MainApi"
 import RoomInfo from "../RoomInfo/RoomInfo"
 import { admin } from "../../utils/const"
 import AdminPage from "../AdminPage/AdminPage"
+import RoomsReservedUser from "../RoomsReservedUser/RoomsReservedUser"
 
 
 
 function App() {
   const navigate = useNavigate()
   const location = useLocation();
+  const [roomIdRes, setRoomIdRes] = useState(null)
   const [currentUser, setCurrentUser] = useState({})
   const [isAdmin, setIsAdmin] = useState(JSON.parse(localStorage.getItem("isAdmin")) ?? false)
   const [errorGlobal, setErrorGlobal] = useState("");
   const [loggedIn, setLoggedIn] = useState(false)
   const [roomsAll, setRoomsAll] = useState(JSON.parse(localStorage.getItem("allRooms")) ?? []);
+  const [myRoom, setMyRoom] = useState([])
 
   function resetErrorGlobal() {
     setErrorGlobal("");
@@ -88,21 +91,36 @@ function App() {
 
 
   useEffect(() => {
-    if (roomsAll.length === 0) {
-      mainApi
-        .getRooms()
-        .then((rooms) => {
-          localStorage.setItem("allRooms", JSON.stringify(rooms));
-          setRoomsAll(rooms)
-        }).catch((err) => console.log(`Ошибка: ${err}`))
-    }
-  }, [loggedIn])
+    mainApi
+      .getRooms()
+      .then((rooms) => {
+
+        setRoomsAll(rooms)
+        const test = rooms.filter(el => el.status === false)
+        setMyRoom(test)
+      }).catch((err) => console.log(`Ошибка: ${err}`))
+  }
+    , [loggedIn, location])
 
   const signOut = () => {
     setLoggedIn(false)
     localStorage.clear();
     navigate("/")
   }
+
+  const onDelete = (id) => {
+    const resRoom = myRoom.find((room) => room._id === id)
+    resRoom.status = true;
+    mainApi
+      .setRoomInfo(resRoom)
+      .then((room) => {
+        // console.log(room.status)
+        setRoomsAll(room)
+      })
+      .catch((err) => console.log(err))
+
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
@@ -114,7 +132,9 @@ function App() {
             <Route path="/signup" element={<Register onSubmit={handleRegistrationSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
             <Route path="/signin" element={<Login onSubmit={handleLoginSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
             <Route path="/rooms" element={<AdminPage roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />} />
-            <Route path="/rooms/:id" element={<RoomInfo roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />} />
+            <Route path="/rooms/:_id" element={<RoomInfo roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} setMyRoom={setMyRoom} myRoom={myRoom} setRoomsAll={setRoomsAll} setRoomIdRes={setRoomIdRes} />} />
+
+            <Route path="/saved-rooms" element={<RoomsReservedUser myRoom={myRoom} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} onDelete={onDelete} roomsAll={roomsAll} roomIdRes={roomIdRes} />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
