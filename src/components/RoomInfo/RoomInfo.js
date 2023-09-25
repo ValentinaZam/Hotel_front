@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import "./RoomInfo.css"
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Preloader from "../Preloader/Preloader";
 import { mainApi } from '../../utils/MainApi';
 import InfoTooltip from '../Popup/Popup';
@@ -13,7 +13,7 @@ function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin, currentUser, setRoomsA
     const [isSuccess, setIsSuccess] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     const navigate = useNavigate()
-    // const [text, setText] = useState("")
+
 
     useEffect(() => {
         const roomInfoId = roomsAll.find((room) => room.roomId === parseInt(params._id));
@@ -21,10 +21,8 @@ function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin, currentUser, setRoomsA
         setRoomInfo(roomInfoId);
     }, [currentUser]);
 
-
     const reservedRoom = (roomId) => {
         const resRoom = roomsAll.find((room) => room._id === roomId)
-        console.log(resRoom)
         resRoom.status = false;
         resRoom.owner = currentUser._id
         if (resRoom) {
@@ -33,7 +31,7 @@ function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin, currentUser, setRoomsA
                 .then((room) => {
                     setIsSuccess(true)
                     setIsOpen(true)
-                    // setRoomsAll([...roomsAll, room])
+
                 })
                 .catch((err) => {
                     setIsSuccess(false)
@@ -41,10 +39,6 @@ function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin, currentUser, setRoomsA
                     console.log(err)
                 })
         }
-        // else{
-        //     setText("У вас нет забронированных номеров")
-        // }
-
     }
 
     const closedPopup = () => {
@@ -67,7 +61,6 @@ function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin, currentUser, setRoomsA
             </article>
         </>) : <Preloader />}
     </>
-
     )
 }
 

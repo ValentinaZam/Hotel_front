@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header'
 import RoomsList from '../App/RoomsList/RoomsList';
 
-function RoomsReservedUser({ roomsAll, signOut, isAdmin, loggedIn, onClick, onDelete, roomIdRes, currentUser, myRoom, check }) {
+function RoomsReservedUser({ signOut, isAdmin, loggedIn, onClick, onDelete, currentUser, myRoom, check }) {
     const [myRoomVis, setMyRoomVis] = useState([]);
 
     useEffect(() => {
-        console.log(myRoom)
         const resRoom = myRoom.filter((room) => room.owner === currentUser._id);
         setMyRoomVis(resRoom)
     }, [check, myRoom])

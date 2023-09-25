@@ -1,8 +1,6 @@
 import React from "react";
 import Header from "../Header/Header";
-
 import "./Main.css"
-// import Room from "../Room/Room";
 import Preloader from "../Preloader/Preloader";
 import RoomsList from "../App/RoomsList/RoomsList";
 

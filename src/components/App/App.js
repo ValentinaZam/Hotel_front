@@ -91,7 +91,6 @@ function App() {
     mainApi
       .getRooms()
       .then((rooms) => {
-        // console.log(rooms)
         setRoomsAll(rooms)
         const test = rooms.filter(el => el.status === false)
         setMyRoom(test)
@@ -112,7 +111,6 @@ function App() {
     mainApi
       .setRoomInfo(resRoom)
       .then((room) => {
-        console.log(room)
         setCheck(room)
       })
       .catch((err) => console.log(err))
@@ -125,14 +123,11 @@ function App() {
           {/* <Header /> */}
           <Routes>
             <Route path="/" element={<Main signOut={signOut} loggedIn={loggedIn} roomsAll={roomsAll} isAdmin={isAdmin} />} />
-            {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/signup" element={<Register onSubmit={handleRegistrationSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
             <Route path="/signin" element={<Login onSubmit={handleLoginSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
             <Route path="/rooms" element={<AdminPage roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />} />
             <Route path="/rooms/:_id" element={<RoomInfo roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} setMyRoom={setMyRoom} myRoom={myRoom} setRoomsAll={setRoomsAll} setRoomIdRes={setRoomIdRes} currentUser={currentUser} />} />
-
-            <Route path="/saved-rooms" element={<RoomsReservedUser check={check} myRoom={myRoom} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} onDelete={onDelete} roomsAll={roomsAll} roomIdRes={roomIdRes} currentUser={currentUser} />} />
-
+            <Route path="/saved-rooms" element={<RoomsReservedUser check={check} myRoom={myRoom} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} onDelete={onDelete} roomIdRes={roomIdRes} currentUser={currentUser} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
 
