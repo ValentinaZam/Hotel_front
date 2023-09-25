@@ -28,26 +28,21 @@ class MainApi {
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
-                status: data.status
+                status: data.status,
+                owner: data.owner
             })
         }).then((res) => this._checkResponse(res))
     }
 
     addSaveRoom(data) {
-
-        return fetch(this._url + "/rooms", {
-            method: "POST",
+        return fetch(this._url + `/rooms/${data._id}`, {
+            method: "PATCH",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("token")}`,
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
-                description: data.description,
-                image: data.image,
-                roomId: data.roomId,
-                name: data.name,
-                category: data.category,
-                status: data.status,
+                owner: data.owner
             })
         }).then((res) => this._checkResponse(res))
     }

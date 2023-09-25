@@ -7,37 +7,44 @@ import { mainApi } from '../../utils/MainApi';
 import InfoTooltip from '../Popup/Popup';
 
 
-function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin, setMyRoom, myRoom, setRoomsAll, setRoomIdRes }) {
+function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin, currentUser, setRoomsAll, setRoomIdRes }) {
     const [roomInfo, setRoomInfo] = useState(null);
     const params = useParams();
     const [isSuccess, setIsSuccess] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     const navigate = useNavigate()
+    // const [text, setText] = useState("")
 
     useEffect(() => {
         const roomInfoId = roomsAll.find((room) => room.roomId === parseInt(params._id));
-        // Здесь с сервера запросить мои номера  и положить в сет мои номера
         setRoomIdRes(params)
         setRoomInfo(roomInfoId);
-    }, [params.id, roomsAll, setRoomInfo]);
+    }, [currentUser]);
 
 
     const reservedRoom = (roomId) => {
         const resRoom = roomsAll.find((room) => room._id === roomId)
+        console.log(resRoom)
         resRoom.status = false;
-        mainApi
-            .setRoomInfo(resRoom)
-            .then((room) => {
-                setIsSuccess(true)
-                setIsOpen(true)
-                setRoomsAll([...roomsAll, room])
-            })
-            .catch((err) => {
-                setIsSuccess(false)
-                setIsOpen(true)
-                console.log(err)
-            })
-        // setMyRoom([...myRoom, resRoom])
+        resRoom.owner = currentUser._id
+        if (resRoom) {
+            mainApi
+                .setRoomInfo(resRoom)
+                .then((room) => {
+                    setIsSuccess(true)
+                    setIsOpen(true)
+                    // setRoomsAll([...roomsAll, room])
+                })
+                .catch((err) => {
+                    setIsSuccess(false)
+                    setIsOpen(true)
+                    console.log(err)
+                })
+        }
+        // else{
+        //     setText("У вас нет забронированных номеров")
+        // }
+
     }
 
     const closedPopup = () => {

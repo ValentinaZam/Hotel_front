@@ -6,7 +6,8 @@ import { validator } from "../Validator/validator"
 function Login({ onSubmit, errorGlobal, resetErrorGlobal }) {
   const [formValue, setFormValue] = useState({
     email: "",
-    password: ""
+    password: "",
+    _id: ""
   })
 
   const [errors, setErrors] = useState({});

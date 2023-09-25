@@ -32,7 +32,8 @@ export const authorize = (userInfo) => {
     mode: "cors",
     body: JSON.stringify({
       email: userInfo.email,
-      password: userInfo.password
+      password: userInfo.password,
+
     })
   }).then((res) => checkResponse(res))
     .then((data) => {
