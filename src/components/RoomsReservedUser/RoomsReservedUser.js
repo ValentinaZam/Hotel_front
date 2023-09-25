@@ -14,8 +14,10 @@ function RoomsReservedUser({ signOut, isAdmin, loggedIn, onClick, onDelete, curr
         <>
             <Header loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />
             <h2 className='title_panel'>Мои номера</h2>
-            <RoomsList myRoom={myRoomVis} onClick={onClick} onDelete={onDelete} />
-
+            {myRoomVis.length === 0 ?
+                <p>У вас нет забронированных номеров</p>
+                :
+                <RoomsList myRoom={myRoomVis} onClick={onClick} onDelete={onDelete} />}
         </>
     )
 }

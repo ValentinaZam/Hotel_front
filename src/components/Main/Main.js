@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import "./Main.css"
 import Preloader from "../Preloader/Preloader";
 import RoomsList from "../App/RoomsList/RoomsList";
+import planetMem from "../../images/planet_mem.png"
 
 
 function Main({ loggedIn, signOut, roomsAll, onClick, isAdmin, onDelete }) {
+    const [checkIsReserved, setCheckIsReserved] = useState(null);
+
+    useEffect(() => {
+        const check = roomsAll.some(el => el.status === true)
+        setCheckIsReserved(check)
+    }, [roomsAll])
+
     return (
         <>
             <Header loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />
             <h2 className="title__text">Доступные номера</h2>
-            {roomsAll ? (<RoomsList roomsAll={roomsAll} onClick={onClick} onDelete={onDelete} />) : <Preloader />}
+            {roomsAll ?
+                (checkIsReserved ?
+                    < RoomsList roomsAll={roomsAll} onClick={onClick} onDelete={onDelete} />
+                    : <>
+                        <p>ДОСТУПНЫХ НОМЕРОВ НЕТ, придётся спать на вокзале</p>
+                        <img className="planet" src={planetMem} alt="Над вами тут стебутся" />
+                    </>
+                )
+                :
+                <Preloader />}
         </>
     );
 }
