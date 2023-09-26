@@ -12,6 +12,7 @@ import RoomInfo from "../RoomInfo/RoomInfo"
 import { admin } from "../../utils/const"
 import AdminPage from "../AdminPage/AdminPage"
 import RoomsReservedUser from "../RoomsReservedUser/RoomsReservedUser"
+import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute"
 
 
 
@@ -127,7 +128,17 @@ function App() {
             <Route path="/signin" element={<Login onSubmit={handleLoginSubmit} resetErrorGlobal={resetErrorGlobal} errorGlobal={errorGlobal} />} />
             <Route path="/rooms" element={<AdminPage roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} />} />
             <Route path="/rooms/:_id" element={<RoomInfo roomsAll={roomsAll} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} setMyRoom={setMyRoom} myRoom={myRoom} setRoomsAll={setRoomsAll} setRoomIdRes={setRoomIdRes} currentUser={currentUser} />} />
-            <Route path="/saved-rooms" element={<RoomsReservedUser check={check} myRoom={myRoom} loggedIn={loggedIn} signOut={signOut} isAdmin={isAdmin} onDelete={onDelete} roomIdRes={roomIdRes} currentUser={currentUser} />} />
+            <Route path="/saved-rooms" element={<ProtectedRoute
+              element={RoomsReservedUser}
+              check={check}
+              myRoom={myRoom}
+              loggedIn={loggedIn}
+              signOut={signOut}
+              isAdmin={isAdmin}
+              onDelete={onDelete}
+              roomIdRes={roomIdRes}
+              currentUser={currentUser}
+            />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
 
