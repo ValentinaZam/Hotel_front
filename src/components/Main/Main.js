@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import "./Main.css"
 import Preloader from "../Preloader/Preloader";
-import RoomsList from "../App/RoomsList/RoomsList";
+import RoomsList from "../RoomsList/RoomsList";
 import planetMem from "../../images/planet_mem.png"
 import { category } from "../../utils/const"
 import { quantity } from "../../utils/const"

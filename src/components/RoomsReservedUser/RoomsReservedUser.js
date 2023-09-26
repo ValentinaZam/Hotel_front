@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header'
-import RoomsList from '../App/RoomsList/RoomsList';
+import RoomsList from '../RoomsList/RoomsList';
 
 function RoomsReservedUser({ signOut, isAdmin, loggedIn, onClick, onDelete, currentUser, myRoom, check }) {
     const [myRoomVis, setMyRoomVis] = useState([]);

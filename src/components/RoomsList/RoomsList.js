@@ -1,5 +1,5 @@
 import React from 'react';
-import Room from '../../Room/Room';
+import Room from '../Room/Room';
 import { useLocation } from 'react-router-dom';
 
 function RoomsList({ onClick, onDelete, myRoom }) {
