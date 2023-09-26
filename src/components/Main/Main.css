@@ -3,9 +3,54 @@
     position: relative;
     
 }
+.text{
+    color: white;
+    margin: 0 10px 0 10px;
+    padding: 0;
+    width: 165px;
+}
+.text_date{
+    color: white;
+    margin: 0 10px 0 10px;
+    padding: 0;
+    text-align: center;
+    
+}
+
+.button__filtered{
+    background-color: rgb(102, 218, 121);
+    border-radius: 25px;
+    margin: 20px 0 0 10px;
+    border: none;
+    transition: background-color 0.6s ease;
+}
+.button__filtered:active {
+    background-color: rgb(16, 20, 16);
+    transition: background-color 0.6s ease;
+}
+
+.sort__container{
+    display: flex;
+    flex-direction: column;
+}
+.sort_box{
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto;
+    
+}
+
+.option{
+border-radius: 5px;
+}
+
+.sort{
+    width: 140px;
+    border-radius: 5px;
+}
 
 .planet{
-    background-color: rgba(0, 0, 0, 0);
+    background-color: #00000000;
     padding-top: 100px;
     width: 250px;
     height: 250px;

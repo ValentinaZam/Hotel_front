@@ -3,4 +3,6 @@ export const admin = {
     password: "Admin111"
 }
 
-export const category = ["double", "apartment", "single"]
+export const category = ["одноместный", "двухместный", "семейный"]
+
+export const quantity = [1, 2, 3, 4]

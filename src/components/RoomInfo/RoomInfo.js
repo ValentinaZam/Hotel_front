@@ -55,7 +55,7 @@ function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin, currentUser, setRoomsA
                 <img src={roomInfo.image} alt={roomInfo.name} className="room__image" />
                 <div className='description__container'>
                     <p className='description'>{roomInfo.description}</p>
-                    {roomInfo.status === true && <button className='button' onClick={() => reservedRoom(roomInfo._id)}>Забронировать</button>}
+                    {roomInfo.status === true && !isAdmin && <button className='button' onClick={() => reservedRoom(roomInfo._id)}>Забронировать</button>}
                 </div>
 
             </article>
