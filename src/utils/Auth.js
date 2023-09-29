@@ -1,5 +1,5 @@
-// export const BASE_URL = "https://api.cine-selecta.nomoreparties.co";
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://51.250.75.118:3000";
+//export const BASE_URL = "http://localhost:3000";
 
 const checkResponse = async (res) => {
   if (res.ok) {
