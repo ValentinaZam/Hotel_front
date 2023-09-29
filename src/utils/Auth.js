@@ -1,4 +1,4 @@
-export const BASE_URL = "https://51.250.75.118";
+export const BASE_URL = "https://api.petprodject-hotelpanet.ru;";
 //export const BASE_URL = "http://localhost:3000";
 
 const checkResponse = async (res) => {
