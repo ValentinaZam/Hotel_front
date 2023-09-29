@@ -69,6 +69,6 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-    url: "https://51.250.75.118:3000",
+    url: "https://51.250.75.118",
     // url: "http://localhost:3000"
 })
