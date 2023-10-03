@@ -22,23 +22,28 @@ function RoomInfo({ loggedIn, signOut, roomsAll, isAdmin, currentUser, setRoomsA
     }, [currentUser]);
 
     const reservedRoom = (roomId) => {
-        const resRoom = roomsAll.find((room) => room._id === roomId)
-        resRoom.status = false;
-        resRoom.owner = currentUser._id
-        if (resRoom) {
-            mainApi
-                .setRoomInfo(resRoom)
-                .then((room) => {
-                    setIsSuccess(true)
-                    setIsOpen(true)
+        if (loggedIn) {
+            const resRoom = roomsAll.find((room) => room._id === roomId)
+            resRoom.status = false;
+            resRoom.owner = currentUser._id
+            if (resRoom) {
+                mainApi
+                    .setRoomInfo(resRoom)
+                    .then((room) => {
+                        setIsSuccess(true)
+                        setIsOpen(true)
 
-                })
-                .catch((err) => {
-                    setIsSuccess(false)
-                    setIsOpen(true)
-                    console.log(err)
-                })
+                    })
+                    .catch((err) => {
+                        setIsSuccess(false)
+                        setIsOpen(true)
+                        console.log(err)
+                    })
+            }
+        } else {
+            alert("Необходима авторизация")
         }
+
     }
 
     const closedPopup = () => {

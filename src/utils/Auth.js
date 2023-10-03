@@ -1,5 +1,5 @@
-export const BASE_URL = "https://api.petprodject-hotelpanet.ru";
-//export const BASE_URL = "http://localhost:3000";
+// export const BASE_URL = "https://api.petprodject-hotelpanet.ru";
+export const BASE_URL = "http://localhost:3000";
 
 const checkResponse = async (res) => {
   if (res.ok) {
