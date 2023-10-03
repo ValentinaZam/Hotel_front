@@ -69,6 +69,6 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-    //url: "https://api.petprodject-hotelpanet.ru",
-    url: "http://localhost:3000"
+    url: "https://api.petprodject-hotelpanet.ru",
+    // url: "http://localhost:3000"
 })
