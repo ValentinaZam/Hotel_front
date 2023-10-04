@@ -17,12 +17,20 @@
     
 }
 
+.sort_box-data{
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto;
+    gap: 10px;
+}
+
 .button__filtered{
     background-color: rgb(102, 218, 121);
     border-radius: 25px;
     margin: 20px 0 0 10px;
     border: none;
     transition: background-color 0.6s ease;
+    width: 400px;
 }
 .button__filtered:active {
     background-color: rgb(16, 20, 16);
@@ -35,6 +43,7 @@
 .sort__container{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .sort_box{
     display: flex;
@@ -90,10 +99,29 @@ border-radius: 5px;
       }
   }
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 590px) {
+    .sort_box-data{
+        display: flex;
+        flex-direction: column;
+        margin: 10px auto;
+    }
+    .button__filtered{
+        border: none;
+        transition: background-color 0.6s ease;
+        width: 200px;
+    }
+    .sort{
+        width: 100px;
+        border-radius: 5px;
+    }
+  }
+
+
+  @media screen and (max-width: 788px) {
     .cards__list {
         margin: 30px auto 10px;
         grid-template-columns: repeat(1, 300px);
         gap: 23px 0;
       }
+     
   }

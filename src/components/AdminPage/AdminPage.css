@@ -1,17 +1,42 @@
 .title_panel{
     margin: 15px;
+    text-align: center;
 }
 .rooms__list{
     padding: 0;
-    margin: 30px 70px 30px;
+    margin: 30px 40px 30px;
     list-style: none;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 32px 20px;
     color: black;
+    
+    
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 20px;
 }
 .list__container{
+    margin: 10px 10px;
     border: 2px solid rgb(134, 122, 99);
     border-radius: 6px;
 background-color: wheat;
 }
+
+@media screen and (max-width: 1023px) {
+    .rooms__list {
+        margin: 15px 18px 10px;
+        padding: 0;
+        grid-template-columns: repeat(2, 339px);
+        gap: 30px 36px;
+      }
+  }
+
+  @media screen and (max-width: 768px) {
+    .rooms__list {
+        margin: 30px auto 10px;
+        grid-template-columns: repeat(1, 300px);
+        gap: 23px 0;
+      }
+  }

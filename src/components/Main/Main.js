@@ -73,7 +73,7 @@ function Main({ loggedIn, signOut, roomsAll, onClick, isAdmin, onDelete }) {
             <div className="sort__container">
                 <Filter category={category} selectedCategory={selectedCategory} handleSelectChange={handleSelectChange} textCategory="Выберите категорию" />
                 <Filter category={quantity} selectedCategory={selectedQuantity} handleSelectChange={handleSelectChangeQuantity} textCategory="Количество человек" />
-                <div className="sort_box">
+                <div className="sort_box-data">
                     <p className="text_date">Дата заезда с</p>
                     <input className="sort"
                         type="date"
