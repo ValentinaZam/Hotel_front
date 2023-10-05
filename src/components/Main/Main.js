@@ -18,9 +18,12 @@ function Main({ loggedIn, signOut, roomsAll, onClick, isAdmin, onDelete }) {
     const [filterRooms, setFilterRooms] = useState([])
 
     useEffect(() => {
-        const check = roomsAll.some(el => el.status === true)
-        setCheckIsReserved(check)
-        setFilterRooms(filterRooms.length !== 0 ? filterRooms : roomsAll)
+        if (roomsAll.length !== 0) {
+            const check = roomsAll.some(el => el.status === true)
+            setCheckIsReserved(check)
+            setFilterRooms(filterRooms.length !== 0 ? filterRooms : roomsAll)
+        }
+
     }, [roomsAll, filterRooms])
 
     const handleSelectChange = (e) => {
@@ -91,7 +94,7 @@ function Main({ loggedIn, signOut, roomsAll, onClick, isAdmin, onDelete }) {
                 <button className="button__filtered" onClick={handleFilterClick}>Применить</button>
             </div >
             {
-                roomsAll ?
+                roomsAll.length !== 0 ?
                     (checkIsReserved ?
                         <RoomsList myRoom={filterRooms} onClick={onClick} onDelete={onDelete} />
                         : <>
